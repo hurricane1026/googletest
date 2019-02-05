@@ -1,0 +1,17 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2019 hurricane <hurricane1026@gmail.com>
+#
+
+
+"""
+Scons build script for google test library
+"""
+
+Import('*')
+env.AppendUnique(CPPPATH = ['#/googletest'])
+env.AppendUnique(CPPPATH = ['#/googletest/include'])
+
+env.Library('gtest', Glob('src/*.cc'))

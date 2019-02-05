@@ -1,0 +1,18 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2019 hurricane <hurricane1026@gmail.com>
+#
+
+
+"""
+Scons build script for google mock library
+"""
+Import("*")
+
+env.AppendUnique(CPPPATH = ['#/googletest/include'])
+env.AppendUnique(CPPPATH = ['#/googlemock'])
+env.AppendUnique(CPPPATH = ['#/googlemock/include'])
+
+env.Library('gmock', Glob('src/*.cc'))

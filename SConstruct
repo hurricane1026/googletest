@@ -17,10 +17,12 @@ if 'env' not in vars().keys():
 
 #scripts = ['googletest/SConscript', 'googlemock/SConscript']
 env.Append(CXXFLAGS = '-std=c++11')
+env.AppendUnique(CCFLAGS = '-pthread')
+env.AppendUnique(LINKFLAGS = '-pthread')
 
 Export('env')
 #VariantDir('build_gtest', 'googletest')
-SConscript('googletest/SConstruct', variant_dir = 'build_gtest', exports='env')
+#SConscript('googletest/SConstruct', variant_dir = 'build_gtest', exports='env')
 #SConscript('googletest/SConscript', exports='env')
 SConscript('googlemock/SConstruct', variant_dir = 'build_gmock', exports='env')
 

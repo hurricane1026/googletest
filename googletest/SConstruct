@@ -14,4 +14,4 @@ Import('*')
 env.AppendUnique(CPPPATH = ['#/googletest'])
 env.AppendUnique(CPPPATH = ['#/googletest/include'])
 
-env.StaticLibrary('gtest', Glob('src/gtest-all.cc'))
+env.StaticLibrary('gtest', 'src/gtest-all.cc')

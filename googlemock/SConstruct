@@ -15,4 +15,4 @@ env.AppendUnique(CPPPATH = ['#/googletest/include'])
 env.AppendUnique(CPPPATH = ['#/googlemock'])
 env.AppendUnique(CPPPATH = ['#/googlemock/include'])
 
-env.StaticLibrary('gmock', Glob('src/gmock-all.cc'))
+env.StaticLibrary('gmock', 'src/gmock-all.cc')

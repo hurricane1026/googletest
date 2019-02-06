@@ -5,13 +5,3 @@
 # Copyright © 2019 hurricane <hurricane1026@gmail.com>
 #
 
-
-"""
-Scons build script for google test library
-"""
-
-Import('*')
-env.AppendUnique(CPPPATH = ['#/googletest'])
-env.AppendUnique(CPPPATH = ['#/googletest/include'])
-
-env.StaticLibrary('gtest', 'src/gtest-all.cc')

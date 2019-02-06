@@ -17,13 +17,32 @@ if 'env' not in vars().keys():
 
 #scripts = ['googletest/SConscript', 'googlemock/SConscript']
 env.Append(CXXFLAGS = '-std=c++11')
+env.Append(TARGET_ARCH = 'x86_64')
 env.AppendUnique(CCFLAGS = '-pthread')
 env.AppendUnique(LINKFLAGS = '-pthread')
 
-Export('env')
 #VariantDir('build_gtest', 'googletest')
-SConscript('googletest/SConstruct', variant_dir = 'build_gtest', exports='env')
 #SConscript('googletest/SConscript', exports='env')
-SConscript('googlemock/SConstruct', variant_dir = 'build_gmock', exports='env')
 
+gtest_env = env.Clone()
+gmock_env = env.Clone()
 
+VariantDir('build_gtest', './googletest/', duplicate = 0)
+VariantDir('build_gmock', './googlemock/', duplicate = 0)
+
+#gtest_env.AppendUnique(CPPPATH = ['#/googletest'])
+gtest_env.AppendUnique(CPPPATH = ['#/googletest/include'])
+gtest_env.AppendUnique(CPPPATH = ['#/googletest'])
+
+gmock_env.AppendUnique(CPPPATH = ['./googlemock/include'])
+gmock_env.AppendUnique(CPPPATH = ['./googlemock'])
+gmock_env.AppendUnique(CPPPATH = ['./googletest/include'])
+
+gmock_env.AppendUnique(LIBPATH = ['#/build/'])
+gmock_env.AppendUnique(LIBS = ['-lgtest'])
+
+gtest_obj = gtest_env.SharedLibrary('build/gtest', '#/googletest/src/gtest-all.cc')
+
+gmock_obj = gmock_env.SharedLibrary('build/gmock', '#/googlemock/src/gmock-all.cc')
+
+Depends(gmock_obj, gtest_obj)

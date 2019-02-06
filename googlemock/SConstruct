@@ -5,14 +5,3 @@
 # Copyright © 2019 hurricane <hurricane1026@gmail.com>
 #
 
-
-"""
-Scons build script for google mock library
-"""
-Import("*")
-
-env.AppendUnique(CPPPATH = ['#/googletest/include'])
-env.AppendUnique(CPPPATH = ['#/googlemock'])
-env.AppendUnique(CPPPATH = ['#/googlemock/include'])
-
-env.StaticLibrary('gmock', 'src/gmock-all.cc')

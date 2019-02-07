@@ -38,11 +38,11 @@ gmock_env.AppendUnique(CPPPATH = ['./googlemock/include'])
 gmock_env.AppendUnique(CPPPATH = ['./googlemock'])
 gmock_env.AppendUnique(CPPPATH = ['./googletest/include'])
 
-gmock_env.AppendUnique(LIBPATH = ['#/build/'])
+gmock_env.AppendUnique(LIBPATH = ['#/libs/'])
 gmock_env.AppendUnique(LIBS = ['-lgtest'])
 
-gtest_obj = gtest_env.SharedLibrary('build/gtest', '#/googletest/src/gtest-all.cc')
+gtest_obj = gtest_env.SharedLibrary('libs/gtest', '#/googletest/src/gtest-all.cc')
 
-gmock_obj = gmock_env.SharedLibrary('build/gmock', '#/googlemock/src/gmock-all.cc')
+gmock_obj = gmock_env.SharedLibrary('libs/gmock', '#/googlemock/src/gmock-all.cc')
 
 Depends(gmock_obj, gtest_obj)

@@ -17,6 +17,13 @@ if 'env' not in vars().keys():
 
 #scripts = ['googletest/SConscript', 'googlemock/SConscript']
 env.Append(CXXFLAGS = '-std=c++11')
+env.Append(CXXFLAGS = '-Wall')
+env.Append(CXXFLAGS = '-Werror')
+env.Append(CXXFLAGS = '-Wextra')
+env.Append(CXXFLAGS = '-Wendif-labels')
+env.Append(CXXFLAGS = '-Wnewline-eof')
+env.Append(CXXFLAGS = '-Wshadow')
+env.Append(CXXFLAGS = '-Wno-sign-compare')
 env.Append(TARGET_ARCH = 'x86_64')
 env.AppendUnique(CCFLAGS = '-pthread')
 env.AppendUnique(LINKFLAGS = '-pthread')

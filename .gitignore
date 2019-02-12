@@ -87,3 +87,5 @@ googlemock/gtest
 libs/*
 googlemock/src/*.os
 googletest/src/*.os
+build_gmock/*
+build_gtest/*

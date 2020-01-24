@@ -82,3 +82,11 @@ googlemock/gtest
 /CMakeCache.txt
 /ALL_BUILD.vcxproj.filters
 /ALL_BUILD.vcxproj
+
+# Ignore scons generated directories and files
+.sconsign.dblite
+libs/*
+googlemock/src/*.os
+googletest/src/*.os
+build_gmock/*
+build_gtest/*
